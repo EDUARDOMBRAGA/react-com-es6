@@ -10196,6 +10196,9 @@ module.exports = getIteratorFn;
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 var React = __webpack_require__(21);
 var SearchUser = __webpack_require__(109);
 var UserInfo = __webpack_require__(110);
@@ -10203,19 +10206,19 @@ var UserInfo = __webpack_require__(110);
 var GitHub = React.createClass({
   displayName: 'GitHub',
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       user: null,
       repos: []
     };
   },
-  updateUser: function (user) {
+  updateUser: function updateUser(user) {
     this.setState({ user: user }); /* Atualização do usúario */
   },
-  updateRepos: function (repos) {
+  updateRepos: function updateRepos(repos) {
     this.setState({ repos: repos }); /* Atualização do repositorios */
   },
-  render: function () {
+  render: function render() {
     return React.createElement(
       'div',
       { className: 'container' },
@@ -11094,6 +11097,9 @@ module.exports = function spread(callback) {
 /* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 var React = __webpack_require__(21);
 var ReactDOM = __webpack_require__(89);
 
@@ -11105,13 +11111,16 @@ ReactDOM.render(React.createElement(GitHub, null), document.getElementById('app'
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 var React = __webpack_require__(21);
 var GitHubUser = __webpack_require__(112);
 
 var SearchUser = React.createClass({
   displayName: 'SearchUser',
 
-  handleSubmit: function (e) {
+  handleSubmit: function handleSubmit(e) {
     e.preventDefault();
 
     GitHubUser.getByUsername(this.refs.username.value).then(function (response) {
@@ -11123,7 +11132,7 @@ var SearchUser = React.createClass({
     }.bind(this));
   },
 
-  render: function () {
+  render: function render() {
     return React.createElement(
       'div',
       { className: 'jumbotron' },
@@ -11169,6 +11178,9 @@ module.exports = SearchUser;
 /***/ }),
 /* 110 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var React = __webpack_require__(21);
 
@@ -11226,20 +11238,23 @@ module.exports = UserInfo;
 /* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 var React = __webpack_require__(21);
 
 var UserRepos = React.createClass({
   displayName: "UserRepos",
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       reposCount: 0
     };
   },
-  componentWillReceiveProps: function (props) {
+  componentWillReceiveProps: function componentWillReceiveProps(props) {
     this.setState({ reposCount: props.repos.length });
   },
-  render: function () {
+  render: function render() {
     var repos = this.props.repos.map(function (repo, key) {
       return React.createElement(
         "div",
@@ -11303,14 +11318,17 @@ module.exports = UserRepos;
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 var axios = __webpack_require__(90);
 
 var GitHubUser = {
-  getByUsername: function (username) {
+  getByUsername: function getByUsername(username) {
     return axios.get('https://api.github.com/users/' + username);
   },
 
-  getReposByUsername: function (username) {
+  getReposByUsername: function getReposByUsername(username) {
     return axios.get('https://api.github.com/users/' + username + '/repos');
   }
 };
