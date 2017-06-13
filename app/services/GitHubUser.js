@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GitHubUser = {
+var GitHubUser = {
   getByUsername: function (username){
     return axios.get('https://api.github.com/users/' + username);
   },
